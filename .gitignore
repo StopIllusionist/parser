@@ -1,0 +1,19 @@
+# Рабочий конфиг с токенами и прокси — НЕ коммитить
+config.toml
+
+# Локальные данные парсера
+database.db
+cookies.json
+state.json
+result/
+*.xlsx
+
+# Логи
+*.log
+
+# Python / прочее
+__pycache__/
+*.pyc
+.venv/
+.env
+.DS_Store
