@@ -1,9 +1,17 @@
 services:
   parser_avito:
     container_name: avito_kalopriemniki
-    # Готовый официальный образ парсера Duff89/parser_avito.
-    # Обновление: docker compose pull && docker compose up -d
-    image: ghcr.io/duff89/parser_avito:latest
+    # Собираем образ из исходников Duff89/parser_avito, закреплённых на версии v3.2.15.
+    # Так набор полей в config.toml всегда совпадает с кодом парсера.
+    # Обновление на новую версию: поменяйте тег ниже и выполните `make update`.
+    build:
+      context: "https://github.com/Duff89/parser_avito.git#v3.2.15"
+    image: parser_avito:v3.2.15
+    #
+    # Альтернатива — готовый образ от автора (может отставать от исходников,
+    # тогда уберите из config.toml новые поля). Закомментируйте build выше и
+    # раскомментируйте строку ниже:
+    # image: ghcr.io/duff89/parser_avito:latest
     restart: always
     volumes:
       # Конфиг (создайте из config.example.toml: cp config.example.toml config.toml)

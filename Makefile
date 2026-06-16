@@ -20,12 +20,11 @@ restart:
 logs:
 	docker compose logs -f
 
-# Обновить образ парсера до последней версии и перезапустить
-update: pull
+# Пересобрать образ парсера из исходников и перезапустить
+# (новую версию задайте тегом в docker-compose.yml)
+update:
+	docker compose build --pull
 	docker compose up -d
-
-pull:
-	docker compose pull
 
 # Статус контейнера
 ps:
